@@ -1,74 +1,43 @@
-import React, { useState } from 'react';
+// App.js
+import React from "react";
+import "./App.css";
 
-function App() {
-  const [score, setScore] = useState(10);
-  const [comment, setComment] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (Number(score) <= 5 && comment.length > 10) {
-      alert('Please provide a comment explaining your low score.');
-      return;
-    }
-    console.log("form submitted");
-    setComment('');
-    setScore(10);
-    alert('Thank you for your feedback!');
-  };
-
+export default function App() {
   return (
-    <div style={{ display: 'flex',marginTop: '40px' }}>
-      <form onSubmit={handleSubmit}>
-        <fieldset style={{
-          width: '350px',
-          border: '1px solid #aaa',
-          padding: '20px',
-          borderRadius: '4px'
-        }}>
-          <h2 style={{ marginTop: 0 }}>Feedback form</h2>
+    <div className="portfolio">
+      <header className="navbar">
+        <div className="logo">Daud Jaan<span className="dot">.</span></div>
+        <nav className="nav">
+          <a href="#about">About me</a>
+          <a href="#services">Services</a>
+          <a href="#work">My Work</a>
+          <a href="#contact">Contact me</a>
+        </nav>
+        <div className="header-actions">
+          <span className="theme-toggle">🌙</span>
+          <button className="contact-btn">Contact ↗</button>
+        </div>
+      </header>
 
-          <div className="Field" style={{ marginBottom: '16px' }}>
-            <label>
-              Score: {score} <span style={{ color: 'gold' }}>★</span>
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="10"
-              value={score}
-              onChange={e => setScore(e.target.value)}
-              style={{ width: '100%', marginTop: '8px' }}
-            />
-          </div>
-
-          <div className="Field" style={{ marginBottom: '16px' }}>
-            <label htmlFor="comment">Comment:</label>
-            <textarea
-              id="comment"
-              value={comment}
-              onChange={e => setComment(e.target.value)}
-              style={{
-                width: '100%',
-                height: '100px',
-                marginTop: '8px',
-                resize: 'none'
-              }}
-            />
-          </div>
-
-          <button type="submit" style={{
-            width: '100%',
-            padding: '8px',
-            border: '1px solid #888',
-            backgroundColor: '#f5f5f5',
-            cursor: 'pointer'
-          }}>
-            Submit
-          </button>
-        </fieldset>
-      </form>
+      <main className="hero">
+        <img
+        className="profile-pic"
+        src="/images/daud.jpg"
+        alt="Daud Abdi"
+         />  
+        <h2>Hi! I'm Daud 👋</h2>
+        <h1>
+          frontend web developer <br /> based in London.
+        </h1>
+        <p>
+          I am a junior frontend developer from Somalia, with experience in AI projects,
+          and embedding javascript in tensorflow on browser.
+        </p>
+        <div className="cta-buttons">
+          <button className="contact">contact me →</button>
+          <button className="resume">my resume ⬇</button>
+        </div>
+      </main>
     </div>
   );
 }
-
-export default App;
